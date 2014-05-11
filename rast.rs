@@ -16,7 +16,7 @@ trait App {
 struct Response<'a> {
   status: int,
   headers: HashMap<&'a str, &'a str>,
-  body: &'a str
+  body: &'a Reader
 }
 
 struct Rast<'r> {
