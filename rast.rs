@@ -1,10 +1,15 @@
-#![crate_type="lib"]
-#![crate_id="rast#0.1"]
+#![crate_id = "rast#0.1"]
 
-//! Rast - A Rust Webserver Interface
+//! # Rast - A Rust Webserver Interface
 //!
 //! Adapted and inspired from [Rack].
+//!
+//! https://github.com/passcod/rast
 //! [Rack]: http://rack.rubyforge.org/doc/SPEC.html
+
+#![crate_type = "lib"]
+#![comment = "A Rust Webserver Interface"]
+#![license = "Public Domain"]
 
 extern crate collections;
 use collections::HashMap;
