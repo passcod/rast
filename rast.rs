@@ -8,7 +8,7 @@
 
 extern crate collections;
 use collections::HashMap;
-use std::io::{Reader, Writer};
+use std::io;
 
 /// `Handler` is the trait web servers must implement.
 ///
@@ -16,7 +16,7 @@ use std::io::{Reader, Writer};
 /// takes a reference to an `App`. All further requirements
 /// are defined by the `App` trait.
 pub trait Handler {
-  fn run(&self, app: &App);
+  fn run<T: App>(&self, app: &T);
 }
 
 /// `App` is the trait web applications must implement,
@@ -32,11 +32,11 @@ pub trait Handler {
 ///
 /// The `call` function must return a `Response` object.
 pub trait App {
-  fn call(&self,
+  fn call<R: io::Reader, W: io::Writer>(&self,
           environment: Environment,
           headers: HashMap<&str, &str>,
-          input: &Reader,
-          error: &Writer) -> Response;
+          input: R,
+          error: W) -> Response;
 }
 
 /// The `rast::http` mod contains types used by HTTP
@@ -52,7 +52,7 @@ pub struct Environment<'e> {
   script_name: &'e str,
   path_info: &'e str,
   query_string: &'e str,
-  server_name: &'e str, // May want to constrain these strs further
+  server_name: &'e str, // May want to constrain these strs further (at runtime?)
   server_port: http::Port,
   url_scheme: http::Scheme,
   content_length: uint
@@ -61,14 +61,10 @@ pub struct Environment<'e> {
   // a Content-Type, when the Status is 1xx, 204, 205 or 304.
 }
 
-
 pub struct Response<'a> {
   status: http::StatusCode,
   headers: HashMap<&'a str, &'a str>,
-  body: &'a Reader
-}
-
-pub struct Rast<'r> {
-  handler: &'r Handler,
-  app: &'r App
+  body: io::MemReader
+  // Not great, but until Rust has type generics,
+  // it's probably good enough.
 }
