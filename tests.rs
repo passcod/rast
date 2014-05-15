@@ -1,4 +1,4 @@
-extern crate rast;
+extern crate rast = "rast#0.3";
 extern crate collections;
 use collections::HashMap;
 use std::io::{Reader, Writer, MemReader, MemWriter};
@@ -7,16 +7,17 @@ use rast::{Handler,App};
 struct TestApp;
 
 impl rast::App for TestApp {
-  fn call<R: Reader, W: Writer>(&self,
-          env: rast::Environment,
-          h: HashMap<&str, &str>,
-          body: R, err: W) -> rast::Response {
-    let r = MemReader::new((~"World").into_bytes());
-    rast::Response {
-      status: rast::http::StatusCode(200),
-      headers: HashMap::new(),
-      body: r
-    }
+  fn call<R: Reader, W: Writer, B: Writer>(
+    &self,
+    env: rast::Environment,
+    h: HashMap<&str, &str>,
+    body: R, err: &mut W, res: &mut B
+  ) -> (
+    rast::http::StatusCode,
+    HashMap<&str, &str>
+  ) {
+    res.write_str("World");
+    (rast::http::StatusCode(200), HashMap::new())
   }
 }
 
@@ -37,10 +38,12 @@ impl rast::Handler for TestHandler {
 
     let mut heads = HashMap::new();
     heads.insert("foo", "bar");
-    let inpt = MemReader::new((~"Hello").into_bytes());
-    let errr = MemWriter::new();
+    let inpt = MemReader::new(std::vec::Vec::from_slice("Hello".to_owned().into_bytes()));
+    let mut errr = MemWriter::new();
+    let mut resp = MemWriter::new();
 
-    println!("{:?}", app.call(env, heads, inpt, errr).body);
+    println!("{:?}", app.call(env, heads, inpt, &mut errr, &mut resp));
+    println!("{:?}", resp);
   }
 }
 

@@ -7,6 +7,8 @@ Based on [Rack](https://rack.github.io/), implements a subset of its features.
 
 ## Build
 
+Currently tracks Rust nightlies.
+
 ```bash
 $ git clone git://github.com/passcod/rast
 $ cd rast
@@ -16,7 +18,7 @@ $ rustc rast.rs
 ## Link
 
 ```rust
-extern crate rast;
+extern crate rast = "rast#0.3";
 use rast::{Handler, App};
 ```
 
@@ -51,8 +53,11 @@ impl rast::Handler for SomeServerHandler {
         content_length: req.length
       };
 
-      let response = app.call(env, req.headers, req.content, std::io::MemWriter::new());
-      server.respond(response.status as u16, response.headers, response.body.read());
+      let mut errors = std::io::MemWriter::new();
+      let mut body = std::io::MemWriter::new();
+
+      let status, headers = app.call(env, req.headers, req.content, &mut errors, &mut body);
+      server.respond(status as u16, headers, body.unwrap());
     });
     server.run_loop();
   }
@@ -71,17 +76,19 @@ use somewerverhandler::SomeServerHandler;
 struct SomeApp;
 
 impl rast::App for SomeApp {
-  fn call<R: std::io::Reader, W: std::io::Writer>(&self,
-    env: rast::Environment, headers: HashMap<&str, &str>,
-    body: R, err: W) -> rast::Response {
-
+  fn call<R: std::io::Reader, W: std::io::Writer, B: std::io::Writer>(
+    &self,
+    env: rast::Environment,
+    headers: HashMap<&str, &str>,
+    body: R, err: &mut W, output: &mut B
+  ) -> (
+    rast::http::StatusCode,
+    HashMap<&str, &str>
+  ) {
     // do something clever...
 
-    rast::Response {
-      status: rast::http::StatusCode(some_status),
-      headers: a_few_headers,
-      body: a_number_of_bytes
-    }
+    output.write(a_bunch_of_bytes);
+    (rast::http::StatusCode(some_status), a_few_headers)
   }
 }
 
