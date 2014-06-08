@@ -11,8 +11,7 @@
 #![comment = "A Rust Webserver Interface"]
 #![license = "Public Domain"]
 
-extern crate collections;
-use collections::HashMap;
+use std::collections::HashMap;
 use std::io;
 
 /// `Handler` is the trait web servers must implement.

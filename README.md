@@ -15,91 +15,32 @@ $ cd rast
 $ rustc rast.rs
 ```
 
-## Link
-
-```rust
-extern crate rast = "rast#0.3";
-use rast::{Handler, App};
-```
-
 ## Use
 
-### For servers:
+See [handlers/rast_http.rs](handlers/rast_http.rs) for a working
+implementation. Generally:
 
-```rust
-extern crate collections;
-use collections::HashMap;
-struct SomeServerHandler {
-  port: uint,
-  // ...other config...
-};
 
-impl rast::Handler for SomeServerHandler {
-  fn run<T: rast::App>(&self, app: &T) {
-    let server = SomeServer::create();
-    server.on_get(proc(req) {
-      let env = rast::Environment {
-        request_method: rast::http::Get,
-        script_name: "",
-        path_info: req.path,
-        query_string: req.query,
-        server_name: server.name,
-        server_port: rast::http::Port(server.port),
-        url_scheme: if server.is_secure() {
-          "https"
-        } else {
-          "http"
-        },
-        content_length: req.length
-      };
-
-      let mut errors = std::io::MemWriter::new();
-      let mut body = std::io::MemWriter::new();
-
-      let status, headers = app.call(env, req.headers, req.content, &mut errors, &mut body);
-      server.respond(status as u16, headers, body.unwrap());
-    });
-    server.run_loop();
-  }
-}
-```
+- You need to `extern crate` both `rast` and the server library.
+- You need to `use std::collections::HashMap;`.
+- You need to define a `struct SomeServerHandler { ... }`.
+  Usually that will contain the configuration for the server.
+- You need to implement [rast::Handler](https://passcod.name/rast/rast/trait.Handler.html) for that struct.
+- When a server runs an app, it needs to call [app.call](https://passcod.name/rast/rast/trait.App.html) with the proper arguments.
+- Once that function returns, it needs to send the response through.
 
 ### For apps:
 
-```rust
-extern crate collections;
-extern crate someserverhandler;
+See [examples/hello-app.rs](examples/hello-app.rs) for a working example.
+Generally:
 
-use collections::HashMap;
-use somewerverhandler::SomeServerHandler;
-
-struct SomeApp;
-
-impl rast::App for SomeApp {
-  fn call<R: std::io::Reader, W: std::io::Writer, B: std::io::Writer>(
-    &self,
-    env: rast::Environment,
-    headers: HashMap<&str, &str>,
-    body: R, err: &mut W, output: &mut B
-  ) -> (
-    rast::http::StatusCode,
-    HashMap<&str, &str>
-  ) {
-    // do something clever...
-
-    output.write(a_bunch_of_bytes);
-    (rast::http::StatusCode(some_status), a_few_headers)
-  }
-}
-
-fn main() {
-  let handler = SomeServerHandler { port: 8080 };
-  let app = SomeApp;
-  handler.run(&app);
-}
-```
+- You need to `extern crate` both `rast` and the handler of your choice.
+- You need to `use std::collections::HashMap;`.
+- You need to create a `struct SomeApp;`.
+- You need to implement [rast::App](https://passcod.name/rast/rast/trait.App.html) for that struct.
+- You should initialise the handler and use it to `.run(&App)` your app.
 
 ## Community
 
-- Adapted and inspired from [Rack](https://rack.github.io)
-- [Public Domain](https://passcod.name/PUBLIC.txt)
+- Adapted and inspired from [Rack](https://rack.github.io).
+- [Public Domain](https://passcod.name/PUBLIC.txt).
