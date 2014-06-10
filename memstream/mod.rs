@@ -32,17 +32,19 @@ pub enum Mode { Fifo, Filo }
 /// be used to implement the required methods for
 /// `Reader` and `Writer`, like so:
 ///
-///    impl Reader for SomeMemStream {
-///      fn read(&mut self, buf: &mut [u8]) -> IoResult<uint> {
-///        self._write(buf)
-///      }
-///    }
-///    
-///    impl Writer for SomeMemStream {
-///      fn write(&mut self, buf: &[u8]) -> IoResult<()> {
-///        self._write(buf)
-///      }
-///    }
+/// ```
+/// impl Reader for SomeMemStream {
+///   fn read(&mut self, buf: &mut [u8]) -> IoResult<uint> {
+///     self._write(buf)
+///   }
+/// }
+/// 
+/// impl Writer for SomeMemStream {
+///   fn write(&mut self, buf: &[u8]) -> IoResult<()> {
+///     self._write(buf)
+///   }
+/// }
+/// ```
 pub trait MemStream<T: Deque<u8>>: Stream {
 
   /// Creates a new `MemStream` in `Filo` mode.
