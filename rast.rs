@@ -13,6 +13,7 @@
 
 use std::collections::HashMap;
 use std::io;
+mod memstream;
 
 /// `Handler` is the trait web servers must implement.
 ///
