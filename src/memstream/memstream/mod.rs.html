@@ -194,6 +194,8 @@
 <span id='154'>154</span>
 <span id='155'>155</span>
 <span id='156'>156</span>
+<span id='157'>157</span>
+<span id='158'>158</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_id</span> <span class='op'>=</span> <span class='string'>&quot;memstream#1.0&quot;</span>]</span>
 
@@ -229,17 +231,19 @@
 </span><span class='doccomment'>/// be used to implement the required methods for
 </span><span class='doccomment'>/// `Reader` and `Writer`, like so:
 </span><span class='doccomment'>///
-</span><span class='doccomment'>///    impl Reader for SomeMemStream {
-</span><span class='doccomment'>///      fn read(&amp;mut self, buf: &amp;mut [u8]) -&gt; IoResult&lt;uint&gt; {
-</span><span class='doccomment'>///        self._write(buf)
-</span><span class='doccomment'>///      }
-</span><span class='doccomment'>///    }
-</span><span class='doccomment'>///    
-</span><span class='doccomment'>///    impl Writer for SomeMemStream {
-</span><span class='doccomment'>///      fn write(&amp;mut self, buf: &amp;[u8]) -&gt; IoResult&lt;()&gt; {
-</span><span class='doccomment'>///        self._write(buf)
-</span><span class='doccomment'>///      }
-</span><span class='doccomment'>///    }
+</span><span class='doccomment'>/// ```
+</span><span class='doccomment'>/// impl Reader for SomeMemStream {
+</span><span class='doccomment'>///   fn read(&amp;mut self, buf: &amp;mut [u8]) -&gt; IoResult&lt;uint&gt; {
+</span><span class='doccomment'>///     self._write(buf)
+</span><span class='doccomment'>///   }
+</span><span class='doccomment'>/// }
+</span><span class='doccomment'>/// 
+</span><span class='doccomment'>/// impl Writer for SomeMemStream {
+</span><span class='doccomment'>///   fn write(&amp;mut self, buf: &amp;[u8]) -&gt; IoResult&lt;()&gt; {
+</span><span class='doccomment'>///     self._write(buf)
+</span><span class='doccomment'>///   }
+</span><span class='doccomment'>/// }
+</span><span class='doccomment'>/// ```
 </span><span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>MemStream</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Deque</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span>: <span class='ident'>Stream</span> {
 
   <span class='doccomment'>/// Creates a new `MemStream` in `Filo` mode.

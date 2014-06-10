@@ -39,7 +39,7 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'>Trait <a href='index.html'>memstream</a>::<a class='trait' href=''>MemStream</a><a class='source' id='src-20' href='../src/memstream/memstream/mod.rs.html#46-110'>[src]</a></h1>
+<h1 class='fqn'>Trait <a href='index.html'>memstream</a>::<a class='trait' href=''>MemStream</a><a class='source' id='src-20' href='../src/memstream/memstream/mod.rs.html#48-112'>[src]</a></h1>
 <pre class='rust trait'>pub trait MemStream&lt;T: <a class='trait' href='http://doc.rust-lang.org/collections/deque/trait.Deque.html' title='collections::deque::Deque'>Deque</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt;: <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Stream.html' title='std::io::Stream'>Stream</a> {
     fn <a href='#tymethod.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a>) -&gt; Self;
     fn <a href='#tymethod.get_ref' class='fnname'>get_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a T;
@@ -55,18 +55,19 @@
 <p>The <code>_read</code> and <code>_write</code> provided methods are to
 be used to implement the required methods for
 <code>Reader</code> and <code>Writer</code>, like so:</p>
-
-<p>impl Reader for SomeMemStream {
-     fn read(&amp;mut self, buf: &amp;mut [u8]) -&gt; IoResult<uint> {
-       self._write(buf)
-     }
-   }</p>
-
-<p>impl Writer for SomeMemStream {
-     fn write(&amp;mut self, buf: &amp;[u8]) -&gt; IoResult&lt;()&gt; {
-       self._write(buf)
-     }
-   }</p>
+<pre class='rust '>
+<span class='kw'>impl</span> <span class='ident'>Reader</span> <span class='kw'>for</span> <span class='ident'>SomeMemStream</span> {
+  <span class='kw'>fn</span> <span class='ident'>read</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>buf</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> [<span class='ident'>u8</span>]) <span class='op'>-&gt;</span> <span class='ident'>IoResult</span><span class='op'>&lt;</span><span class='ident'>uint</span><span class='op'>&gt;</span> {
+    <span class='self'>self</span>.<span class='ident'>_write</span>(<span class='ident'>buf</span>)
+  }
+}
+ 
+<span class='kw'>impl</span> <span class='ident'>Writer</span> <span class='kw'>for</span> <span class='ident'>SomeMemStream</span> {
+  <span class='kw'>fn</span> <span class='ident'>write</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>buf</span>: <span class='kw-2'>&amp;</span>[<span class='ident'>u8</span>]) <span class='op'>-&gt;</span> <span class='ident'>IoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+    <span class='self'>self</span>.<span class='ident'>_write</span>(<span class='ident'>buf</span>)
+  }
+}
+</pre>
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
