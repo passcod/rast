@@ -35,7 +35,7 @@ pub enum Mode { Fifo, Filo }
 /// ```
 /// impl Reader for SomeMemStream {
 ///   fn read(&mut self, buf: &mut [u8]) -> IoResult<uint> {
-///     self._write(buf)
+///     self._read(buf)
 ///   }
 /// }
 /// 
@@ -47,7 +47,7 @@ pub enum Mode { Fifo, Filo }
 /// ```
 pub trait MemStream<T: Deque<u8>>: Stream {
 
-  /// Creates a new `MemStream` in `Filo` mode.
+  /// Creates a new `MemStream` in `Fifo` mode.
   fn new() -> Self {
     let it: Self = MemStream::with_mode(Fifo);
     return it;
