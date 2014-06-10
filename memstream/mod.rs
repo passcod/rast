@@ -1,4 +1,4 @@
-#![crate_id = "memstream#1.0"]
+#![crate_id = "memstream#1.0.1"]
 
 //! # MemStream
 //!
@@ -17,10 +17,11 @@
 #![crate_type = "lib"]
 #![license = "Public Domain"]
 
-use std::result::{Err, Ok};
 use std::collections::{Deque, DList, RingBuf};
-use std::io;
 use std::io::{IoResult, Stream, Reader, Writer};
+use std::io;
+use std::result::{Err, Ok};
+use std::slice::bytes;
 use std::vec::Vec;
 
 /// The possible modes a `MemStream` can use.
@@ -95,7 +96,7 @@ pub trait MemStream<T: Deque<u8>>: Stream {
 
     let put: &[u8] = out.as_slice();
     assert_eq!(buf.len(), put.len());
-    std::slice::bytes::copy_memory(buf, put);
+    bytes::copy_memory(buf, put);
 
     Ok(count)
   }
