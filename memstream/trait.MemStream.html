@@ -58,7 +58,7 @@ be used to implement the required methods for
 <pre class='rust '>
 <span class='kw'>impl</span> <span class='ident'>Reader</span> <span class='kw'>for</span> <span class='ident'>SomeMemStream</span> {
   <span class='kw'>fn</span> <span class='ident'>read</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>buf</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> [<span class='ident'>u8</span>]) <span class='op'>-&gt;</span> <span class='ident'>IoResult</span><span class='op'>&lt;</span><span class='ident'>uint</span><span class='op'>&gt;</span> {
-    <span class='self'>self</span>.<span class='ident'>_write</span>(<span class='ident'>buf</span>)
+    <span class='self'>self</span>.<span class='ident'>_read</span>(<span class='ident'>buf</span>)
   }
 }
  
@@ -86,7 +86,7 @@ this <code>MemStream</code>.</p>
 </div></div>
             <h2 id='provided-methods'>Provided Methods</h2>
             <div class='methods'>
-        <h3 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></h3><div class='docblock'><p>Creates a new <code>MemStream</code> in <code>Filo</code> mode.</p>
+        <h3 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></h3><div class='docblock'><p>Creates a new <code>MemStream</code> in <code>Fifo</code> mode.</p>
 </div><h3 id='method._read' class='method'><code>fn <a href='#method._read' class='fnname'>_read</a>(&amp;mut self, buf: &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>&gt;</code></h3><div class='docblock'><p>Implements the <code>read</code> method for the <code>Reader</code> trait.
 See the code sample in the trait description for
 implementation details.</p>
