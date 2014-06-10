@@ -1,4 +1,4 @@
-#![crate_id = "memstream#0.1"]
+#![crate_id = "memstream#1.0"]
 
 //! # MemStream
 //!
@@ -9,7 +9,7 @@
 //! implementations provided in the standard library.
 //!
 //!
-//! - https://passcod.name/rast/memreader
+//! - https://passcod.name/rast/memstream
 //! - https://github.com/passcod/rast/tree/master/memstream
 //! [`MemWriter`]: http://doc.rust-lang.org/std/io/struct.MemWriter.html
 //! [`MemReader`]: http://doc.rust-lang.org/std/io/struct.MemReader.html
