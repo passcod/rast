@@ -105,8 +105,21 @@
 <span id='65'>65</span>
 <span id='66'>66</span>
 <span id='67'>67</span>
+<span id='68'>68</span>
+<span id='69'>69</span>
+<span id='70'>70</span>
+<span id='71'>71</span>
+<span id='72'>72</span>
+<span id='73'>73</span>
+<span id='74'>74</span>
+<span id='75'>75</span>
+<span id='76'>76</span>
+<span id='77'>77</span>
+<span id='78'>78</span>
+<span id='79'>79</span>
+<span id='80'>80</span>
 </pre><pre class='rust '>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_id</span> <span class='op'>=</span> <span class='string'>&quot;rast#0.3&quot;</span>]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_id</span> <span class='op'>=</span> <span class='string'>&quot;rast#0.4&quot;</span>]</span>
 
 <span class='doccomment'>//! # Rast - A Rust Webserver Interface
 </span><span class='doccomment'>//!
@@ -119,8 +132,11 @@
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>comment</span> <span class='op'>=</span> <span class='string'>&quot;A Rust Webserver Interface&quot;</span>]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>license</span> <span class='op'>=</span> <span class='string'>&quot;Public Domain&quot;</span>]</span>
 
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>url</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>string</span>::<span class='ident'>String</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>memstream</span>;
 
 <span class='doccomment'>/// `Handler` is the trait web servers must implement.
 </span><span class='doccomment'>///
@@ -159,18 +175,28 @@
 </span><span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>http</span> {
   <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>StatusCode</span>(<span class='kw'>pub</span> <span class='ident'>u16</span>);
   <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Port</span>(<span class='kw'>pub</span> <span class='ident'>u16</span>);
-  <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Method</span> { <span class='ident'>Get</span>, <span class='ident'>Head</span>, <span class='ident'>Post</span>, <span class='ident'>Put</span>, <span class='ident'>Delete</span>, <span class='ident'>Trace</span>, <span class='ident'>Options</span>, <span class='ident'>Connect</span>, <span class='ident'>Patch</span> }
+  <span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>FromPrimitive</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Method</span> { <span class='ident'>Connect</span>, <span class='ident'>Delete</span>, <span class='ident'>Get</span>, <span class='ident'>Head</span>, <span class='ident'>Options</span>, <span class='ident'>Patch</span>, <span class='ident'>Post</span>, <span class='ident'>Put</span>, <span class='ident'>Trace</span> }
   <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Scheme</span> { <span class='ident'>Http</span>, <span class='ident'>Https</span> }
 }
 
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Environment</span><span class='op'>&lt;</span><span class='lifetime'>&#39;e</span><span class='op'>&gt;</span> {
+<span class='doccomment'>/// Describes the environment of an HTTP request.
+</span><span class='doccomment'>///
+</span><span class='doccomment'>/// If `url` is `None`, it indicates the request&#39;s
+</span><span class='doccomment'>/// URL couldn&#39;t be parsed or was missing. The [asterisk
+</span><span class='doccomment'>/// from RFC2616§5.1.2][rfc2616sec512] (`*`) should be
+</span><span class='doccomment'>/// translated to the valid `Url` `http://*`.
+</span><span class='doccomment'>///
+</span><span class='doccomment'>/// The `raw_url` should contain the original URL as
+</span><span class='doccomment'>/// received by the server.
+</span><span class='doccomment'>///
+</span><span class='doccomment'>/// The `content_length` should reflect the value given
+</span><span class='doccomment'>/// in the headers, or `0` if not present.
+</span><span class='doccomment'>///
+</span><span class='doccomment'>/// [rfc2616sec512]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5.1.2
+</span><span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Environment</span><span class='op'>&lt;</span><span class='lifetime'>&#39;e</span><span class='op'>&gt;</span> {
+  <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>url</span>::<span class='ident'>Url</span><span class='op'>&gt;</span>,
+  <span class='kw'>pub</span> <span class='ident'>raw_url</span>: <span class='ident'>String</span>,
   <span class='kw'>pub</span> <span class='ident'>request_method</span>: <span class='ident'>http</span>::<span class='ident'>Method</span>,
-  <span class='kw'>pub</span> <span class='ident'>script_name</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;e</span> <span class='ident'>str</span>,
-  <span class='kw'>pub</span> <span class='ident'>path_info</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;e</span> <span class='ident'>str</span>,
-  <span class='kw'>pub</span> <span class='ident'>query_string</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;e</span> <span class='ident'>str</span>,
-  <span class='kw'>pub</span> <span class='ident'>server_name</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;e</span> <span class='ident'>str</span>,
-  <span class='kw'>pub</span> <span class='ident'>server_port</span>: <span class='ident'>http</span>::<span class='ident'>Port</span>,
-  <span class='kw'>pub</span> <span class='ident'>url_scheme</span>: <span class='ident'>http</span>::<span class='ident'>Scheme</span>,
   <span class='kw'>pub</span> <span class='ident'>content_length</span>: <span class='ident'>uint</span>
 }
 </pre>

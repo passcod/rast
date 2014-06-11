@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The rast library documentation.">
 
-    <title>rast::http - Rust</title>
+    <title>rast::memstream - Rust</title>
 
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600'
           rel='stylesheet' type='text/css'>
@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='../index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../http/index.html'>http</a><br/><a class='mod ' href='../memstream/index.html'>memstream</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.App.html'>App</a><br/><a class='trait ' href='../trait.Handler.html'>Handler</a><br/></div>
+        <p class='location'><a href='../index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../http/index.html'>http</a><br/><a class='mod current' href='../memstream/index.html'>memstream</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.App.html'>App</a><br/><a class='trait ' href='../trait.Handler.html'>Handler</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -39,33 +39,47 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../index.html'>rast</a>::<a class='mod' href=''>http</a><a class='source' id='src-716' href='../../src/rast/rast.rs.html#54-59'>[src]</a></h1>
-<div class='docblock'><p>The <code>rast::http</code> mod contains types used by HTTP</p>
+<h1 class='fqn'>Module <a href='../index.html'>rast</a>::<a class='mod' href=''>memstream</a><a class='source' id='src-7' href='../../src/rast/memstream/mod.rs.html#1-157'>[src]</a></h1>
+<div class='docblock'><p>Like a <a href="http://doc.rust-lang.org/std/io/struct.MemWriter.html"><code>MemWriter</code></a> and <a href="http://doc.rust-lang.org/std/io/struct.MemReader.html"><code>MemReader</code></a>, but both
+at the same time. It is backed by a <code>Deque&lt;u8&gt;</code>.</p>
+
+<p>This crate provides <code>MemStream</code>s backed by all <code>Deque</code>
+implementations provided in the standard library.</p>
+
+<ul>
+<li><a href="https://passcod.name/rast/memstream">https://passcod.name/rast/memstream</a></li>
+<li><a href="https://github.com/passcod/rast/tree/master/memstream">https://github.com/passcod/rast/tree/master/memstream</a></li>
+</ul>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='struct' href='struct.Port.html'
-                               title='rast::http::Port'>Port</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='struct' href='struct.DListStream.html'
+                               title='rast::memstream::DListStream'>DListStream</a></td>
+                        <td class='docblock short'><p>An implementation of <code>MemStream</code> using <code>DList</code>.</p>
+</td>
                     </tr>
                 
                     <tr>
-                        <td><a class='struct' href='struct.StatusCode.html'
-                               title='rast::http::StatusCode'>StatusCode</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='struct' href='struct.RingBufStream.html'
+                               title='rast::memstream::RingBufStream'>RingBufStream</a></td>
+                        <td class='docblock short'><p>An implementation of <code>MemStream</code> using <code>RingBuf</code>.</p>
+</td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
-                        <td><a class='type' href='type.Method.html'
-                               title='rast::http::Method'>Method</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='type' href='type.Mode.html'
+                               title='rast::memstream::Mode'>Mode</a></td>
+                        <td class='docblock short'><p>The possible modes a <code>MemStream</code> can use.</p>
+</td>
                     </tr>
-                
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
                     <tr>
-                        <td><a class='type' href='type.Scheme.html'
-                               title='rast::http::Scheme'>Scheme</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='trait' href='trait.MemStream.html'
+                               title='rast::memstream::MemStream'>MemStream</a></td>
+                        <td class='docblock short'><p>A trait for in-memory, <code>Deque&lt;u8&gt;</code>-backed streams.</p>
+</td>
                     </tr>
                 </table></section>
     <section id='search' class="content hidden"></section>

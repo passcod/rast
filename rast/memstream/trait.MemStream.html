@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The memstream library documentation.">
+    <meta name="description" content="The rast library documentation.">
 
-    <title>memstream::MemStream - Rust</title>
+    <title>rast::memstream::MemStream - Rust</title>
 
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600'
           rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
 </head>
@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='index.html'>memstream</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.DListStream.html'>DListStream</a><br/><a class='struct ' href='struct.RingBufStream.html'>RingBufStream</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait current' href='trait.MemStream.html'>MemStream</a><br/></div>
+        <p class='location'><a href='../index.html'>rast</a>&#8203;::<a href='index.html'>memstream</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.DListStream.html'>DListStream</a><br/><a class='struct ' href='struct.RingBufStream.html'>RingBufStream</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait current' href='trait.MemStream.html'>MemStream</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -39,13 +39,13 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'>Trait <a href='index.html'>memstream</a>::<a class='trait' href=''>MemStream</a><a class='source' id='src-21' href='../src/memstream/memstream/mod.rs.html#47-111'>[src]</a></h1>
+<h1 class='fqn'>Trait <a href='../index.html'>rast</a>::<a href='index.html'>memstream</a>::<a class='trait' href=''>MemStream</a><a class='source' id='src-27' href='../../src/rast/memstream/mod.rs.html#47-111'>[src]</a></h1>
 <pre class='rust trait'>pub trait MemStream&lt;T: <a class='trait' href='http://doc.rust-lang.org/collections/deque/trait.Deque.html' title='collections::deque::Deque'>Deque</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt;: <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Stream.html' title='std::io::Stream'>Stream</a> {
-    fn <a href='#tymethod.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a>) -&gt; Self;
+    fn <a href='#tymethod.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a>) -&gt; Self;
     fn <a href='#tymethod.get_ref' class='fnname'>get_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a T;
     fn <a href='#tymethod.unwrap' class='fnname'>unwrap</a>(self) -&gt; T;
     fn <a href='#tymethod.queue' class='fnname'>queue</a>&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut T;
-    fn <a href='#tymethod.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a>;
+    fn <a href='#tymethod.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a>;
 
     fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self { ... }
     fn <a href='#method._read' class='fnname'>_read</a>(&amp;mut self, buf: &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>&gt; { ... }
@@ -71,7 +71,7 @@ be used to implement the required methods for
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.with_mode' class='method'><code>fn <a href='#tymethod.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a>) -&gt; Self</code></h3><div class='docblock'><p>Creates a new <code>MemStream</code> in either <code>Fifo</code> (&quot;first
+        <h3 id='tymethod.with_mode' class='method'><code>fn <a href='#tymethod.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a>) -&gt; Self</code></h3><div class='docblock'><p>Creates a new <code>MemStream</code> in either <code>Fifo</code> (&quot;first
 in first out&quot;, the intuitive and default behaviour)
 or <code>Filo</code> (&quot;first in last out&quot;) mode.</p>
 </div><h3 id='tymethod.get_ref' class='method'><code>fn <a href='#tymethod.get_ref' class='fnname'>get_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a T</code></h3><div class='docblock'><p>Acquires an immutable reference to the underlying <code>Deque</code>.</p>
@@ -81,7 +81,7 @@ or <code>Filo</code> (&quot;first in last out&quot;) mode.</p>
 <p>This is used internally, and while manipulating the
 underlying <code>Deque</code> will not corrupt the <code>MemStream</code>,
 its use in external code is discouraged.</p>
-</div><h3 id='tymethod.mode' class='method'><code>fn <a href='#tymethod.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a></code></h3><div class='docblock'><p>Acquires an immutable reference to the <code>Mode</code> of
+</div><h3 id='tymethod.mode' class='method'><code>fn <a href='#tymethod.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a></code></h3><div class='docblock'><p>Acquires an immutable reference to the <code>Mode</code> of
 this <code>MemStream</code>.</p>
 </div></div>
             <h2 id='provided-methods'>Provided Methods</h2>
@@ -96,10 +96,10 @@ implementation details.</p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl <a class='trait' href='../memstream/trait.MemStream.html' title='memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/dlist/struct.DList.html' title='collections::dlist::DList'>DList</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../memstream/struct.DListStream.html' title='memstream::DListStream'>DListStream</a></code></li>
-<li><code>impl <a class='trait' href='../memstream/trait.MemStream.html' title='memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../memstream/struct.RingBufStream.html' title='memstream::RingBufStream'>RingBufStream</a></code></li>
+    <li><code>impl <a class='trait' href='../../rast/memstream/trait.MemStream.html' title='rast::memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/dlist/struct.DList.html' title='collections::dlist::DList'>DList</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../../rast/memstream/struct.DListStream.html' title='rast::memstream::DListStream'>DListStream</a></code></li>
+<li><code>impl <a class='trait' href='../../rast/memstream/trait.MemStream.html' title='rast::memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../../rast/memstream/struct.RingBufStream.html' title='rast::memstream::RingBufStream'>RingBufStream</a></code></li>
 </ul><script type="text/javascript" async
-                              src="../implementors/memstream/trait.MemStream.js">
+                              src="../../implementors/rast/memstream/trait.MemStream.js">
                       </script></section>
     <section id='search' class="content hidden"></section>
 
@@ -137,11 +137,11 @@ implementation details.</p>
     </div>
 
     <script>
-        var rootPath = "../";
-        var currentCrate = "memstream";
+        var rootPath = "../../";
+        var currentCrate = "rast";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
-    <script async src="../search-index.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script async src="../../search-index.js"></script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The memstream library documentation.">
+    <meta name="description" content="The rast library documentation.">
 
-    <title>memstream::RingBufStream - Rust</title>
+    <title>rast::memstream::RingBufStream - Rust</title>
 
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600'
           rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
 </head>
@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='index.html'>memstream</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.DListStream.html'>DListStream</a><br/><a class='struct current' href='struct.RingBufStream.html'>RingBufStream</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.MemStream.html'>MemStream</a><br/></div>
+        <p class='location'><a href='../index.html'>rast</a>&#8203;::<a href='index.html'>memstream</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.DListStream.html'>DListStream</a><br/><a class='struct current' href='struct.RingBufStream.html'>RingBufStream</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.MemStream.html'>MemStream</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -39,19 +39,19 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='index.html'>memstream</a>::<a class='struct' href=''>RingBufStream</a><a class='source' id='src-510' href='../src/memstream/memstream/mod.rs.html#137'>[src]</a></h1>
+<h1 class='fqn'>Struct <a href='../index.html'>rast</a>::<a href='index.html'>memstream</a>::<a class='struct' href=''>RingBufStream</a><a class='source' id='src-516' href='../../src/rast/memstream/mod.rs.html#137'>[src]</a></h1>
 <pre class='rust struct'>pub struct RingBufStream {
     // some fields omitted
 }</pre><div class='docblock'><p>An implementation of <code>MemStream</code> using <code>RingBuf</code>.</p>
-</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../memstream/trait.MemStream.html' title='memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../memstream/struct.RingBufStream.html' title='memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.with_mode' class='method'><code>fn <a href='#method.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a>) -&gt; <a class='struct' href='../memstream/struct.RingBufStream.html' title='memstream::RingBufStream'>RingBufStream</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../../rast/memstream/trait.MemStream.html' title='rast::memstream::MemStream'>MemStream</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;&gt; for <a class='struct' href='../../rast/memstream/struct.RingBufStream.html' title='rast::memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.with_mode' class='method'><code>fn <a href='#method.with_mode' class='fnname'>with_mode</a>(mode: <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a>) -&gt; <a class='struct' href='../../rast/memstream/struct.RingBufStream.html' title='rast::memstream::RingBufStream'>RingBufStream</a></code></h4>
 <h4 id='method.get_ref' class='method'><code>fn <a href='#method.get_ref' class='fnname'>get_ref</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;</code></h4>
 <h4 id='method.unwrap' class='method'><code>fn <a href='#method.unwrap' class='fnname'>unwrap</a>(self) -&gt; <a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;</code></h4>
 <h4 id='method.queue' class='method'><code>fn <a href='#method.queue' class='fnname'>queue</a>&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut <a class='struct' href='http://doc.rust-lang.org/collections/ringbuf/struct.RingBuf.html' title='collections::ringbuf::RingBuf'>RingBuf</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;</code></h4>
-<h4 id='method.mode' class='method'><code>fn <a href='#method.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../memstream/type.Mode.html' title='memstream::Mode'>Mode</a></code></h4>
+<h4 id='method.mode' class='method'><code>fn <a href='#method.mode' class='fnname'>mode</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='type' href='../../rast/memstream/type.Mode.html' title='rast::memstream::Mode'>Mode</a></code></h4>
 <h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></h4>
 <h4 id='method._read' class='method'><code>fn <a href='#method._read' class='fnname'>_read</a>(&amp;mut self, buf: &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>&gt;</code></h4>
 <h4 id='method._write' class='method'><code>fn <a href='#method._write' class='fnname'>_write</a>(&amp;mut self, buf: &amp;<a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;()&gt;</code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Writer.html' title='std::io::Writer'>Writer</a> for <a class='struct' href='../memstream/struct.RingBufStream.html' title='memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.write' class='method'><code>fn <a href='#method.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;<a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;()&gt;</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Writer.html' title='std::io::Writer'>Writer</a> for <a class='struct' href='../../rast/memstream/struct.RingBufStream.html' title='rast::memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.write' class='method'><code>fn <a href='#method.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;<a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;()&gt;</code></h4>
 <h4 id='method.flush' class='method'><code>fn <a href='#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.write_fmt' class='method'><code>fn <a href='#tymethod.write_fmt' class='fnname'>write_fmt</a>(&amp;mut self, &amp;<a class='struct' href='http://doc.rust-lang.org/core/fmt/struct.Arguments.html' title='core::fmt::Arguments'>Arguments</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.write_str' class='method'><code>fn <a href='#tymethod.write_str' class='fnname'>write_str</a>(&amp;mut self, &amp;<a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
@@ -82,7 +82,7 @@
 <h4 id='method.write_u8' class='method'><code>fn <a href='#tymethod.write_u8' class='fnname'>write_u8</a>(&amp;mut self, <a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.write_i8' class='method'><code>fn <a href='#tymethod.write_i8' class='fnname'>write_i8</a>(&amp;mut self, <a href='http://doc.rust-lang.org/std/primitive.i8.html'>i8</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.by_ref' class='method'><code>fn <a href='#tymethod.by_ref' class='fnname'>by_ref</a>(&amp;'a mut self) -&gt; <a class='struct' href='http://doc.rust-lang.org/std/io/struct.RefWriter.html' title='std::io::RefWriter'>RefWriter</a>&lt;'a, Self&gt;</code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Reader.html' title='std::io::Reader'>Reader</a> for <a class='struct' href='../memstream/struct.RingBufStream.html' title='memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.read' class='method'><code>fn <a href='#method.read' class='fnname'>read</a>(&amp;mut self, buf: &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>&gt;</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Reader.html' title='std::io::Reader'>Reader</a> for <a class='struct' href='../../rast/memstream/struct.RingBufStream.html' title='rast::memstream::RingBufStream'>RingBufStream</a></code></h3><div class='methods'><h4 id='method.read' class='method'><code>fn <a href='#method.read' class='fnname'>read</a>(&amp;mut self, buf: &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/std/io/type.IoResult.html' title='std::io::IoResult'>IoResult</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>&gt;</code></h4>
 <h4 id='method.read_at_least' class='method'><code>fn <a href='#tymethod.read_at_least' class='fnname'>read_at_least</a>(&amp;mut self, <a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>, &amp;mut <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>]</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>, <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.read_byte' class='method'><code>fn <a href='#tymethod.read_byte' class='fnname'>read_byte</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
 <h4 id='method.push' class='method'><code>fn <a href='#tymethod.push' class='fnname'>push</a>(&amp;mut self, <a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>, &amp;mut <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>, <a class='struct' href='http://doc.rust-lang.org/std/io/struct.IoError.html' title='std::io::IoError'>IoError</a>&gt;</code></h4>
@@ -155,11 +155,11 @@
     </div>
 
     <script>
-        var rootPath = "../";
-        var currentCrate = "memstream";
+        var rootPath = "../../";
+        var currentCrate = "rast";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
-    <script async src="../search-index.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script async src="../../search-index.js"></script>
 </body>
 </html>

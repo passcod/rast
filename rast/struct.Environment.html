@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='http/index.html'>http</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.App.html'>App</a><br/><a class='trait ' href='trait.Handler.html'>Handler</a><br/></div>
+        <p class='location'><a href='index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='http/index.html'>http</a><br/><a class='mod ' href='memstream/index.html'>memstream</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.App.html'>App</a><br/><a class='trait ' href='trait.Handler.html'>Handler</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -39,18 +39,26 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='index.html'>rast</a>::<a class='struct' href=''>Environment</a><a class='source' id='src-93' href='../src/rast/rast.rs.html#58-67'>[src]</a></h1>
+<h1 class='fqn'>Struct <a href='index.html'>rast</a>::<a class='struct' href=''>Environment</a><a class='source' id='src-953' href='../src/rast/rast.rs.html#75-80'>[src]</a></h1>
 <pre class='rust struct'>pub struct Environment&lt;'e&gt; {
+    pub url: <a class='type' href='http://doc.rust-lang.org/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/url/struct.Url.html' title='url::Url'>Url</a>&gt;,
+    pub raw_url: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>,
     pub request_method: <a class='type' href='../rast/http/type.Method.html' title='rast::http::Method'>Method</a>,
-    pub script_name: &amp;'e <a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>,
-    pub path_info: &amp;'e <a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>,
-    pub query_string: &amp;'e <a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>,
-    pub server_name: &amp;'e <a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>,
-    pub server_port: <a class='struct' href='../rast/http/struct.Port.html' title='rast::http::Port'>Port</a>,
-    pub url_scheme: <a class='type' href='../rast/http/type.Scheme.html' title='rast::http::Scheme'>Scheme</a>,
     pub content_length: <a href='http://doc.rust-lang.org/std/primitive.uint.html'>uint</a>,
-}</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.request_method'><code>request_method</code></td><td></td></tr><tr><td id='structfield.script_name'><code>script_name</code></td><td></td></tr><tr><td id='structfield.path_info'><code>path_info</code></td><td></td></tr><tr><td id='structfield.query_string'><code>query_string</code></td><td></td></tr><tr><td id='structfield.server_name'><code>server_name</code></td><td></td></tr><tr><td id='structfield.server_port'><code>server_port</code></td><td></td></tr><tr><td id='structfield.url_scheme'><code>url_scheme</code></td><td></td></tr><tr><td id='structfield.content_length'><code>content_length</code></td><td></td></tr></table></section>
+}</pre><div class='docblock'><p>Describes the environment of an HTTP request.</p>
+
+<p>If <code>url</code> is <code>None</code>, it indicates the request&#39;s
+URL couldn&#39;t be parsed or was missing. The <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5.1.2">asterisk
+from RFC2616§5.1.2</a> (<code>*</code>) should be
+translated to the valid <code>Url</code> <code>http://*</code>.</p>
+
+<p>The <code>raw_url</code> should contain the original URL as
+received by the server.</p>
+
+<p>The <code>content_length</code> should reflect the value given
+in the headers, or <code>0</code> if not present.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.url'><code>url</code></td><td></td></tr><tr><td id='structfield.raw_url'><code>raw_url</code></td><td></td></tr><tr><td id='structfield.request_method'><code>request_method</code></td><td></td></tr><tr><td id='structfield.content_length'><code>content_length</code></td><td></td></tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='http/index.html'>http</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait current' href='trait.App.html'>App</a><br/><a class='trait ' href='trait.Handler.html'>Handler</a><br/></div>
+        <p class='location'><a href='index.html'>rast</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='http/index.html'>http</a><br/><a class='mod ' href='memstream/index.html'>memstream</a><br/></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Environment.html'>Environment</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait current' href='trait.App.html'>App</a><br/><a class='trait ' href='trait.Handler.html'>Handler</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +39,7 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'>Trait <a href='index.html'>rast</a>::<a class='trait' href=''>App</a><a class='source' id='src-18' href='../src/rast/rast.rs.html#41-48'>[src]</a></h1>
+<h1 class='fqn'>Trait <a href='index.html'>rast</a>::<a class='trait' href=''>App</a><a class='source' id='src-666' href='../src/rast/rast.rs.html#44-51'>[src]</a></h1>
 <pre class='rust trait'>pub trait App {
     fn <a href='#tymethod.call' class='fnname'>call</a>&lt;R: <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Reader.html' title='std::io::Reader'>Reader</a>, W: <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Writer.html' title='std::io::Writer'>Writer</a>, B: <a class='trait' href='http://doc.rust-lang.org/std/io/trait.Writer.html' title='std::io::Writer'>Writer</a>&gt;(&amp;self, environment: <a class='struct' href='../rast/struct.Environment.html' title='rast::Environment'>Environment</a>, headers: <a class='struct' href='http://doc.rust-lang.org/std/collections/hashmap/struct.HashMap.html' title='std::collections::hashmap::HashMap'>HashMap</a>&lt;&amp;<a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>, &amp;<a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>&gt;, input: R, error: &amp;mut W, body: &amp;mut B) -&gt; <a href='http://doc.rust-lang.org/std/primitive.tuple.html'>(<a class='struct' href='../rast/http/struct.StatusCode.html' title='rast::http::StatusCode'>StatusCode</a>, <a class='struct' href='http://doc.rust-lang.org/std/collections/hashmap/struct.HashMap.html' title='std::collections::hashmap::HashMap'>HashMap</a>&lt;&amp;<a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>, &amp;<a href='http://doc.rust-lang.org/std/primitive.str.html'>str</a>&gt;)</a>;
 }</pre><div class='docblock'><p><code>App</code> is the trait web applications must implement,

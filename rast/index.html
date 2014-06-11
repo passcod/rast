@@ -39,7 +39,7 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Crate <a class='mod' href=''>rast</a><a class='source' id='src-0' href='../src/rast/rast.rs.html#1-67'>[src]</a></h1>
+<h1 class='fqn'>Crate <a class='mod' href=''>rast</a><a class='source' id='src-0' href='../src/rast/rast.rs.html#1-80'>[src]</a></h1>
 <div class='docblock'>
 <h1 id="rast---a-rust-webserver-interface" class='section-header'><a
                            href="#rast---a-rust-webserver-interface">Rast - A Rust Webserver Interface</a></h1>
@@ -54,12 +54,21 @@
                         <td class='docblock short'><p>The <code>rast::http</code> mod contains types used by HTTP</p>
 </td>
                     </tr>
+                
+                    <tr>
+                        <td><a class='mod' href='memstream/index.html'
+                               title='rast::memstream'>memstream</a></td>
+                        <td class='docblock short'><p>Like a [<code>MemWriter</code>] and [<code>MemReader</code>], but both
+at the same time. It is backed by a <code>Deque&lt;u8&gt;</code>.</p>
+</td>
+                    </tr>
                 </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='struct' href='struct.Environment.html'
                                title='rast::Environment'>Environment</a></td>
-                        <td class='docblock short'></td>
+                        <td class='docblock short'><p>Describes the environment of an HTTP request.</p>
+</td>
                     </tr>
                 </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>

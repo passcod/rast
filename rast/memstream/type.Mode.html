@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The rast library documentation.">
 
-    <title>rast::http::Port - Rust</title>
+    <title>rast::memstream::Mode - Rust</title>
 
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600'
           rel='stylesheet' type='text/css'>
@@ -24,7 +24,7 @@
     <section class="sidebar">
         
 
-        <p class='location'><a href='../index.html'>rast</a>&#8203;::<a href='index.html'>http</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.Port.html'>Port</a><br/><a class='struct ' href='struct.StatusCode.html'>StatusCode</a><br/></div>
+        <p class='location'><a href='../index.html'>rast</a>&#8203;::<a href='index.html'>memstream</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.DListStream.html'>DListStream</a><br/><a class='struct ' href='struct.RingBufStream.html'>RingBufStream</a><br/></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.MemStream.html'>MemStream</a><br/></div>
     </section>
 
     <nav class="sub">
@@ -38,9 +38,14 @@
         </form>
     </nav>
 
-    <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='../index.html'>rast</a>::<a href='index.html'>http</a>::<a class='struct' href=''>Port</a><a class='source' id='src-723' href='../../src/rast/rast.rs.html#56'>[src]</a></h1>
-<pre class='rust struct'>pub struct Port(pub <a href='http://doc.rust-lang.org/std/primitive.u16.html'>u16</a>);</pre></section>
+    <section id='main' class="content type">
+<h1 class='fqn'>Enum <a href='../index.html'>rast</a>::<a href='index.html'>memstream</a>::<a class='type' href=''>Mode</a><a class='source' id='src-24' href='../../src/rast/memstream/mod.rs.html#26'>[src]</a></h1>
+<pre class='rust enum'>pub enum Mode {
+    Fifo,
+    Filo,
+}</pre><div class='docblock'><p>The possible modes a <code>MemStream</code> can use.</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Fifo'><code>Fifo</code></td><td></td></tr><tr><td id='variant.Filo'><code>Filo</code></td><td></td></tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
