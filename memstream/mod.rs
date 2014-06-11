@@ -1,7 +1,5 @@
-#![crate_id = "memstream#1.0.1"]
+#![crate_id = "memstream#1.0.2"]
 
-//! # MemStream
-//!
 //! Like a [`MemWriter`] and [`MemReader`], but both
 //! at the same time. It is backed by a `Deque<u8>`.
 //!
