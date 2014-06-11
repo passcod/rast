@@ -1,4 +1,4 @@
-#![crate_id = "rast#0.3"]
+#![crate_id = "rast#0.4"]
 
 //! # Rast - A Rust Webserver Interface
 //!
@@ -11,9 +11,11 @@
 #![comment = "A Rust Webserver Interface"]
 #![license = "Public Domain"]
 
+extern crate url;
 use std::collections::HashMap;
 use std::io;
-mod memstream;
+use std::string::String;
+pub mod memstream;
 
 /// `Handler` is the trait web servers must implement.
 ///
@@ -52,17 +54,27 @@ pub trait App {
 pub mod http {
   pub struct StatusCode(pub u16);
   pub struct Port(pub u16);
-  pub enum Method { Get, Head, Post, Put, Delete, Trace, Options, Connect, Patch }
+  #[deriving(FromPrimitive)] pub enum Method { Connect, Delete, Get, Head, Options, Patch, Post, Put, Trace }
   pub enum Scheme { Http, Https }
 }
 
+/// Describes the environment of an HTTP request.
+///
+/// If `url` is `None`, it indicates the request's
+/// URL couldn't be parsed or was missing. The [asterisk
+/// from RFC2616§5.1.2][rfc2616sec512] (`*`) should be
+/// translated to the valid `Url` `http://*`.
+///
+/// The `raw_url` should contain the original URL as
+/// received by the server.
+///
+/// The `content_length` should reflect the value given
+/// in the headers, or `0` if not present.
+///
+/// [rfc2616sec512]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5.1.2
 pub struct Environment<'e> {
+  pub url: Option<url::Url>,
+  pub raw_url: String,
   pub request_method: http::Method,
-  pub script_name: &'e str,
-  pub path_info: &'e str,
-  pub query_string: &'e str,
-  pub server_name: &'e str,
-  pub server_port: http::Port,
-  pub url_scheme: http::Scheme,
   pub content_length: uint
 }
