@@ -45,7 +45,7 @@ pub trait App {
   fn call<R: io::Reader, W: io::Writer, B: io::Writer>(
     &self,
     environment: Environment,
-    headers: HashMap<&str, &str>,
+    headers: HashMap<String, String>,
     input: R, error: &mut W, body: &mut B
   ) -> (http::StatusCode, HashMap<&str, &str>);
 }
